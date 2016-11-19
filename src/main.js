@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import Login from './components/Login'
 import VueRouter from 'vue-router'
+import auth from './lib/auth'
 
 Vue.use(VueRouter)
 
@@ -14,20 +15,17 @@ let router = new VueRouter({routes})
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-  /*  if (!auth.loggedIn()) {
+    if (!auth.isLoggedIn()) {
       next({
         path: '/login',
-        query: {redirect: to.fullPath }
+        query: { redirect: to.fullPath }
       })
     } else {
       next()
     }
   } else {
-    next() // make sure to always call next()! */
+    next()
   }
-  next()
 })
 
 /* eslint-disable no-new */
