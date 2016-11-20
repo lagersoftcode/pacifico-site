@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import keyStorage from 'key-storage'
 import login from './script/login'
 
 export default {
@@ -38,6 +39,11 @@ export default {
       this.$Progress.start()
       login.requestLogin(this.username, this.password).then(response => {
         this.error = ''
+        this.$Progress.finish()
+        keyStorage.set('AuthToken', response.data.AuthToken)
+
+        let redirect = this.$route.query.redirect || '/'
+        this.$router.push(redirect)
       }).catch(error => {
         this.$Progress.fail()
         this.error = 'Error!'

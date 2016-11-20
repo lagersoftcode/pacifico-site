@@ -1,5 +1,5 @@
-import localStorage from 'key-storage'
+import keyStorage from 'key-storage'
 
 export default {
-  isLoggedIn: () => { return localStorage.get('auth') }
+  isLoggedIn: () => { return keyStorage.get('AuthToken') }
 }

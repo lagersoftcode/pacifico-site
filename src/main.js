@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Login from './components/login/Component'
+import Dashboard from './components/dashboard/Component'
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
 import axios from 'axios'
@@ -15,7 +16,8 @@ Vue.use(VueProgressBar, {
 axios.defaults.headers.post['With-credentials'] = config.WITH_CREDENTIALS_HEADER
 
 let routes = [
-  { path: '/login', component: Login, meta: { requiresAuth: false } }
+  { name: 'dashboard', path: '/', component: Dashboard, meta: { requiresAuth: true } },
+  { name: 'login', path: '/login', component: Login, meta: { requiresAuth: false } }
 ]
 
 let router = new VueRouter({routes})

@@ -1,8 +1,7 @@
-import config from '../../../siteconfig'
-import axios from 'axios'
+import baseRequest from '../../../lib/baseRequest'
 
 function login (username, password) {
-  return axios.post(`${config.SITE_API}/Login`, { username: username, password: password })
+  return baseRequest.post('/Login', { username: username, password: password }, true)
 }
 
 export default {
