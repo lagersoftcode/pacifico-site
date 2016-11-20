@@ -1,13 +1,20 @@
 import Vue from 'vue'
-import App from './App'
-import Login from './components/Login'
+import Login from './components/login/Component'
 import VueRouter from 'vue-router'
+import VueProgressBar from 'vue-progressbar'
+import axios from 'axios'
 import auth from './lib/auth'
+import config from './siteconfig'
 
 Vue.use(VueRouter)
+Vue.use(VueProgressBar, {
+  failedColor: 'red',
+  thickness: '10px'
+})
+
+axios.defaults.headers.post['With-credentials'] = config.WITH_CREDENTIALS_HEADER
 
 let routes = [
-  { path: '/', component: App, meta: { requiresAuth: true } },
   { path: '/login', component: Login, meta: { requiresAuth: false } }
 ]
 
