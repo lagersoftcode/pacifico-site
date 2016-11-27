@@ -7,9 +7,28 @@
     <link rel="stylesheet" href="https://bootswatch.com/lumen/bootstrap.min.css">
   </head>
   <body>
-    <div id="app" class="container">
-      <router-view></router-view>
-      <vue-progress-bar></vue-progress-bar>
+    <div id="app" class="container-fluid">
+
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+           <div class="navbar-header">
+              <a class="navbar-brand">Digi Scores</a>
+           </div>
+           <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                 <li><router-link to="/">Dashboard</router-link></li>
+                 <li><router-link to="/catalogs">Catalogs</router-link></li>
+                 <li><router-link to="/newUser">New User</router-link></li>
+                 <li><router-link to="/myAccount">My Account</router-link></li>
+              </ul>
+           </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <router-view transition="fade"></router-view>
+        <vue-progress-bar></vue-progress-bar>
+      </div>
     </div>
     <!-- built files will be auto injected -->
   </body>

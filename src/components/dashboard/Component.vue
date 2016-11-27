@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="dashboard">
     <div class="row">
       <h1>Dashboard</h1>
     </div>
@@ -19,6 +19,7 @@
 
 <script>
   import dashboard from './script/dashboard'
+  import baseRequest from '../../lib/baseRequest'
 
   export default {
     name: 'dashboard',
@@ -37,7 +38,7 @@
           this.usersLoaded = true
           this.users = response.data.Users
         }).catch(error => {
-          console.log(error)
+          baseRequest.errorHandler(error)
         })
       }
     }

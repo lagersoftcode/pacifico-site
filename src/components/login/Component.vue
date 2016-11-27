@@ -8,8 +8,8 @@
           </div>
           <div class="panel-body">
             <div>
-              <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" maxlength="15" v-model="username">
-              <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" maxlength="15" v-model="password">
+              <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" maxlength="15" v-model="username" v-on:keyup.enter="login">
+              <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" maxlength="15" v-model="password" v-on:keyup.enter="login">
               <hr>
               <input type="button" class="btn btn-primary" id="loginButton" value="Login" v-on:click="login">
               <div>
