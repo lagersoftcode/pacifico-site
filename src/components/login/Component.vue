@@ -7,15 +7,15 @@
             <h2>Please login :)</h2>
           </div>
           <div class="panel-body">
-            <div>
-              <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" maxlength="15" v-model="username" v-on:keyup.enter="login">
-              <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" maxlength="15" v-model="password" v-on:keyup.enter="login">
+            <form v-on:submit.prevent="login">
+              <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" maxlength="15" v-model="username" />
+              <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" maxlength="15" v-model="password" />
               <hr>
-              <input type="button" class="btn btn-primary" id="loginButton" value="Login" v-on:click="login">
+              <input type="submit" class="btn btn-primary" id="loginButton" value="Login" />
               <div>
                   <span class="label label-danger">{{ error }}</span>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
