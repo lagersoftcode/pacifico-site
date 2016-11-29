@@ -27,7 +27,18 @@
                  <li><router-link to="/">Dashboard</router-link></li>
                  <li><router-link to="/catalogs">Catalogs</router-link></li>
                  <li><router-link to="/newUser">New User</router-link></li>
-                 <li><router-link to="/myAccount">My Account</router-link></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                   <span class="caret"></span>
+                 </a>
+                 <ul class="dropdown-menu">
+                   <li><router-link to="/myAccount">My Account</router-link></li>
+                   <li><router-link to="/logout">Logout</router-link></li>
+                 </ul>
+               </li>
               </ul>
            </div>
         </div>
