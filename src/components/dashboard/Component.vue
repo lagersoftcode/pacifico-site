@@ -6,6 +6,7 @@
     <hr>
     <div class="row">
       <span class="label label-info" v-if="!usersLoaded">Loading users...</span>
+      <span class="label label-danger">{{ loadingDashboardError }}</span>
       <div class="col-md-4" v-for="user in users">
         <div class="panel panel-info">
           <div class="panel-heading">
@@ -26,6 +27,7 @@
     data () {
       return {
         usersLoaded: false,
+        loadingDashboardError: '',
         users: []
       }
     },
@@ -34,10 +36,14 @@
     },
     methods: {
       loadUsers () {
+        this.$Progress.start()
         dashboard.loadUsers().then(response => {
           this.usersLoaded = true
           this.users = response.data.Users
+          this.$Progress.finish()
         }).catch(error => {
+          this.loadingDashboardError = 'Error loading dashboard data'
+          this.$Progress.fail()
           baseRequest.errorHandler(error)
         })
       }
