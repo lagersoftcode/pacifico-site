@@ -50,11 +50,14 @@
     },
     methods: {
       loadMedals: function () {
+        this.$Progress.start()
         medalList.loadMedals().then(response => {
           this.medals = response.data.Medals
+          this.$Progress.finish()
         }).catch(error => {
           this.loadMedalsError = 'Error loading medals'
           baseRequest.errorHandler(error)
+          this.$Progress.fail()
         })
       }
     }

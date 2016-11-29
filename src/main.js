@@ -6,6 +6,7 @@ import AddTrophy from './components/catalogs/addTrophy/Component'
 import AddMedal from './components/catalogs/addMedal/Component'
 import TrophyList from './components/catalogs/trophyList/Component'
 import MedalList from './components/catalogs/medalList/Component'
+import GiveTrophy from './components/actions/giveTrophy/Component'
 import NewUser from './components/newUser/Component'
 import VueProgressBar from 'vue-progressbar'
 import axios from 'axios'
@@ -29,6 +30,7 @@ let routes = [
   { name: 'trophyList', path: '/trophyList', component: TrophyList, meta: { requiresAuth: true } },
   { name: 'addMedal', path: '/addMedal', component: AddMedal, meta: { requiresAuth: true } },
   { name: 'medalList', path: '/medalList', component: MedalList, meta: { requiresAuth: true } },
+  { name: 'giveTrophy', path: '/giveTrophy', component: GiveTrophy, meta: { requiresAuth: true } },
   { name: 'newUser', path: '/newUser', component: NewUser, meta: { requiresAuth: true } }
 ]
 

@@ -48,11 +48,14 @@
     },
     methods: {
       loadTrophies: function () {
+        this.$Progress.start()
         trophyList.loadTrophies().then(response => {
           this.trophies = response.data.Trophies
+          this.$Progress.finish()
         }).catch(error => {
           this.loadTrophiesError = 'Error loading trophies'
           baseRequest.errorHandler(error)
+          this.$Progress.fail()
         })
       }
     }
