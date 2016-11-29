@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard">
+  <div class="dashboard section">
     <div class="row">
       <h1>Dashboard</h1>
     </div>
@@ -51,6 +51,6 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="sass">
+  @import '../theme/theme.scss';
 </style>

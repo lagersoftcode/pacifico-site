@@ -59,8 +59,4 @@ export default {
     margin-top: 10rem;
     text-align: center;
   }
-
-  input[type="text"], input[type="password"] {
-    margin-top: 1rem;
-  }
 </style>
