@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from './components/login/Component'
 import Dashboard from './components/dashboard/Component'
 import AddTrophy from './components/catalogs/addTrophy/Component'
+import AddMedal from './components/catalogs/addMedal/Component'
 import TrophyList from './components/catalogs/trophyList/Component'
 import NewUser from './components/newUser/Component'
 import VueProgressBar from 'vue-progressbar'
@@ -25,6 +26,7 @@ let routes = [
   { name: 'dashboard', path: '/', component: Dashboard, meta: { requiresAuth: true } },
   { name: 'addTrophy', path: '/addTrophy', component: AddTrophy, meta: { requiresAuth: true } },
   { name: 'trophyList', path: '/trophyList', component: TrophyList, meta: { requiresAuth: true } },
+  { name: 'addMedal', path: '/addMedal', component: AddMedal, meta: { requiresAuth: true } },
   { name: 'newUser', path: '/newUser', component: NewUser, meta: { requiresAuth: true } }
 ]
 
