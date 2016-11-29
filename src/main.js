@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from './components/login/Component'
 import Dashboard from './components/dashboard/Component'
+import NewUser from './components/newUser/Component'
 import VueProgressBar from 'vue-progressbar'
 import axios from 'axios'
 import auth from './lib/auth'
@@ -17,7 +18,8 @@ axios.defaults.headers.post['With-credentials'] = config.WITH_CREDENTIALS_HEADER
 
 let routes = [
   { name: 'dashboard', path: '/', component: Dashboard, meta: { requiresAuth: true } },
-  { name: 'login', path: '/login', component: Login, meta: { requiresAuth: false } }
+  { name: 'login', path: '/login', component: Login, meta: { requiresAuth: false } },
+  { name: 'newUser', path: '/newUser', component: NewUser, meta: { requiresAuth: true } }
 ]
 
 let router = new VueRouter({routes})
