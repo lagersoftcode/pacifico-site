@@ -56,7 +56,5 @@ export default {
 </script>
 
 <style scoped>
-  .panel {
-    border-top-width: 1px;
-  }
+  
 </style>

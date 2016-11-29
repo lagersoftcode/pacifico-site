@@ -4,31 +4,35 @@
       <h1>Add Medal</h1>
     </div>
     <hr>
-    <div class="class row">
-      <div class="col-sm-4">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Medal Name" maxlength="30" v-model="name">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Medal Image" maxlength="200" v-model="image">
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" rows="8" cols="80" placeholder="Description" v-model="description"></textarea>
-        </div>
-        <div class="form-group">
-          <select class="form-control" v-model="material">
-            <option value="1">Bronze</option>
-            <option value="2">Silver</option>
-            <option value="3">Gold</option>
-            <option value="4">Diamond</option>
-            <option value="5">Platinum</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <input type="number" class="form-control" placeholder="Score Value" v-model="scoreAmount">
-        </div>
-        <div class="form-group">
-          <input type="button" class="btn btn-info" value="Save" v-on:click="save">
+    <div class="row">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="col-sm-8 col-sm-offset-2">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Medal Name" maxlength="30" v-model="name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Medal Image" maxlength="200" v-model="image">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="8" cols="80" placeholder="Description" v-model="description"></textarea>
+            </div>
+            <div class="form-group">
+              <select class="form-control" v-model="material">
+                <option value="1">Bronze</option>
+                <option value="2">Silver</option>
+                <option value="3">Gold</option>
+                <option value="4">Diamond</option>
+                <option value="5">Platinum</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" placeholder="Score Value" v-model="scoreAmount">
+            </div>
+            <div class="form-group">
+              <input type="button" class="btn btn-info" value="Save" v-on:click="save">
+            </div>
+          </div>
         </div>
       </div>
     </div>
