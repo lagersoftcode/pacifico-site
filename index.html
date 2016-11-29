@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>pacifico-site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://bootswatch.com/lumen/bootstrap.min.css">
@@ -9,17 +12,33 @@
   <body>
     <div id="app" class="container-fluid">
 
-      <nav class="navbar navbar-default navbar-static-top">
+      <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
            <div class="navbar-header">
               <a class="navbar-brand">Digi Scores</a>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
            </div>
            <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                  <li><router-link to="/">Dashboard</router-link></li>
                  <li><router-link to="/catalogs">Catalogs</router-link></li>
                  <li><router-link to="/newUser">New User</router-link></li>
-                 <li><router-link to="/myAccount">My Account</router-link></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                   <span class="caret"></span>
+                 </a>
+                 <ul class="dropdown-menu">
+                   <li><router-link to="/myAccount">My Account</router-link></li>
+                   <li><router-link to="/logout">Logout</router-link></li>
+                 </ul>
+               </li>
               </ul>
            </div>
         </div>
@@ -31,5 +50,8 @@
       </div>
     </div>
     <!-- built files will be auto injected -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>
