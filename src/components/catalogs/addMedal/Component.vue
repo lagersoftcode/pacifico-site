@@ -19,11 +19,11 @@
             </div>
             <div class="form-group">
               <select class="form-control" v-model="material">
-                <option value="1">Bronze</option>
-                <option value="2">Silver</option>
-                <option value="3">Gold</option>
-                <option value="4">Diamond</option>
-                <option value="5">Platinum</option>
+                <option value="Bronze">Bronze</option>
+                <option value="Silver">Silver</option>
+                <option value="Gold">Gold</option>
+                <option value="Diamond">Diamond</option>
+                <option value="Platinum">Platinum</option>
               </select>
             </div>
             <div class="form-group">
@@ -60,7 +60,7 @@
     methods: {
       save () {
         this.$Progress.start()
-        let data = {name: this.name, image: this.image, description: this.description, material: Number.parseInt(this.material), scoreAmount: this.scoreAmount}
+        let data = {name: this.name, image: this.image, description: this.description, material: this.material, scoreAmount: this.scoreAmount}
         let error = addMedal.validateForm(data)
         if (error.length > 0) {
           this.$Progress.fail()

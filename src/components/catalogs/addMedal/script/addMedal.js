@@ -13,7 +13,7 @@ function validateForm (data) {
     error = 'Medal must have an image!'
   } else if (!data.description || data.description.length < 3) {
     error = 'Medal must have a description!'
-  } else if (!data.material || !Number.isInteger(data.material)) {
+  } else if (!data.material || data.material.length < 3) {
     error = 'Medal must have a material!'
   } else if (!data.scoreAmount || !Number.isInteger(data.scoreAmount)) {
     error = 'Score must be an integer'
