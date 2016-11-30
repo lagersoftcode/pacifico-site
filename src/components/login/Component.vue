@@ -77,5 +77,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .login {
+    margin-top: 10rem;
+    text-align: center;
+  }
 </style>

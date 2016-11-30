@@ -7,7 +7,7 @@
     <div class="row">
       <div class="panel">
         <div class="panel-body">
-          <div class="col-sm-8 col-sm-offset-2">
+          <form class="col-sm-8 col-sm-offset-2" v-on:submit.prevent="save">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Medal Name" maxlength="30" v-model="name">
             </div>
@@ -30,9 +30,9 @@
               <input type="number" class="form-control" placeholder="Score Value" v-model="scoreAmount">
             </div>
             <div class="form-group">
-              <input type="button" class="btn btn-info" value="Save" v-on:click="save">
+              <input type="submit" class="btn btn-info" value="Save" >
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
 
     },
     methods: {
-      save: function () {
+      save () {
         this.$Progress.start()
         let data = {name: this.name, image: this.image, description: this.description, material: Number.parseInt(this.material), scoreAmount: this.scoreAmount}
         let error = addMedal.validateForm(data)
