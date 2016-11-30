@@ -8,7 +8,7 @@
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "deploy": "cd dist && s3-deploy './**' --bucket 'score.lagersoft.com' --profile 'pacifico'"
+    "deploy": "node build/build.js && cd dist && s3-deploy './**' --bucket 'score.lagersoft.com' --profile 'pacifico'"
   },
   "dependencies": {
     "axios": "^0.15.2",
