@@ -4,33 +4,37 @@
       <h1>Give Medal</h1>
     </div>
     <hr>
-    <div class="class row">
-      <div class="col-sm-4">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="username" v-on:keyup="userInput" v-model="username">
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="medal" v-on:keyup="medalInput" v-model="medal">
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="form-group">
-          <input type="button" class="btn btn-info" value="Give" v-on:click="saveGivenMedal">
-        </div>
-      </div>
-    </div>
     <div class="row">
-      <div class="col-sm-4">
-        <ul class="list-group">
-          <li class="list-group-item clickable-item" v-for="user in filteredUsers" v-on:click="userSelected(user)">{{ user.UserName }}</li>
-        </ul>
-      </div>
-      <div class="col-sm-4">
-        <ul class="list-group">
-          <li class="list-group-item clickable-item" v-for="medal in filteredMedals" v-on:click="medalSelected(medal)">{{ medal.Name }}</li>
-        </ul>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="username" v-on:keyup="userInput" v-model="username">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="medal" v-on:keyup="medalInput" v-model="medal">
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <input type="button" class="btn btn-info" value="Give" v-on:click="saveGivenMedal">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <ul class="list-group">
+              <li class="list-group-item clickable-item" v-for="user in filteredUsers" v-on:click="userSelected(user)">{{ user.UserName }}</li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <ul class="list-group">
+              <li class="list-group-item clickable-item" v-for="medal in filteredMedals" v-on:click="medalSelected(medal)">{{ medal.Name }}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">

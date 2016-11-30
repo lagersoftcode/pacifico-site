@@ -37,8 +37,14 @@
       </div>
     </div>
     <div class="row">
-      <span class="label label-danger">{{ addMedalError }}</span>
-      <span class="label label-success">{{ successMessage }}</span>
+      <div
+        v-for="message in resultMessages"
+        :class="'alert alert-' + message.type"
+        v-if="message.active"
+        role="alert"
+      >
+        <strong>{{ message.type }}!</strong> {{ message.message }}
+      </div>
     </div>
   </div>
 </template>
@@ -46,12 +52,13 @@
   import addMedal from './script/addMedal'
   import baseRequest from '../../../lib/baseRequest'
 
+  let resultMessages = addMedal.resultMessages
+
   export default {
     name: 'addMedal',
     data () {
       return {
-        addMedalError: '',
-        successMessage: ''
+        resultMessages
       }
     },
     created () {
@@ -60,22 +67,25 @@
     methods: {
       save () {
         this.$Progress.start()
+        resultMessages.FORM_ERROR.active = false
+        resultMessages.ERROR.active = false
+        resultMessages.SUCCESS.active = false
         let data = {name: this.name, image: this.image, description: this.description, material: Number.parseInt(this.material), scoreAmount: this.scoreAmount}
         let error = addMedal.validateForm(data)
         if (error.length > 0) {
           this.$Progress.fail()
-          this.addMedalError = error
+          resultMessages.FORM_ERROR.message = error
+          resultMessages.FORM_ERROR.active = true
         } else {
-          this.addMedalError = ''
           addMedal.saveMedal(data).then(response => {
             this.$Progress.finish()
             this.name = ''
             this.image = ''
             this.description = ''
             this.scoreAmount = 0
-            this.successMessage = 'Medal created! :)'
+            resultMessages.SUCCESS.active = true
           }).catch(error => {
-            this.addMedalError = 'Error creating trophy :('
+            resultMessages.ERROR.active = true
             baseRequest.errorHandler(error)
           })
         }

@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard">
+  <section class="addTrophy">
     <div class="row">
       <h1>Add Trophy</h1>
     </div>
@@ -36,8 +36,9 @@
         <strong>Success!</strong> {{ successMessage }}
       </div>
     </div>
-  </div>
+  </section>
 </template>
+
 <script>
   import addTrophy from './script/addTrophy'
   import baseRequest from '../../../lib/baseRequest'
