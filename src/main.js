@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import keyStorage from 'key-storage'
 import Login from './components/login/Component'
 import Dashboard from './components/dashboard/Component'
 import AddTrophy from './components/catalogs/addTrophy/Component'
@@ -31,7 +32,8 @@ let routes = [
   { name: 'addMedal', path: '/addMedal', component: AddMedal, meta: { requiresAuth: true } },
   { name: 'medalList', path: '/medalList', component: MedalList, meta: { requiresAuth: true } },
   { name: 'giveTrophy', path: '/giveTrophy', component: GiveTrophy, meta: { requiresAuth: true } },
-  { name: 'newUser', path: '/newUser', component: NewUser, meta: { requiresAuth: true } }
+  { name: 'newUser', path: '/newUser', component: NewUser, meta: { requiresAuth: true } },
+  { name: 'logout', path: '/logout' }
 ]
 
 let router = new VueRouter({routes})
@@ -46,6 +48,11 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
+  } else if (to.matched.some(record => { return record.name === 'logout' })) {
+    keyStorage.remove('AuthToken')
+    next({
+      path: '/login'
+    })
   } else {
     next()
   }
