@@ -28,8 +28,13 @@
       </div>
     </div>
     <div class="row">
-      <span class="label label-danger">{{ addTrophyError }}</span>
-      <span class="label label-success">{{ successMessage }}</span>
+      <div v-if="addTrophyError !==''" class="alert alert-danger" role="alert">
+        <strong>Error!</strong> {{ addTrophyError }}
+      </div>
+
+      <div v-if="successMessage !== ''" class="alert alert-success" role="alert">
+        <strong>Success!</strong> {{ successMessage }}
+      </div>
     </div>
   </div>
 </template>
@@ -51,13 +56,19 @@
     methods: {
       save () {
         this.$Progress.start()
-        let data = {name: this.name, image: this.image, description: this.description, scoreAmount: this.scoreAmount}
+        this.addTrophyError = ''
+        this.successMessage = ''
+        let data = {
+          name: this.name,
+          image: this.image,
+          description: this.description,
+          scoreAmount: this.scoreAmount
+        }
         let error = addTrophy.validateForm(data)
         if (error.length > 0) {
           this.$Progress.fail()
           this.addTrophyError = error
         } else {
-          this.addTrophyError = ''
           addTrophy.saveTrophy(data).then(response => {
             this.$Progress.finish()
             this.name = ''
