@@ -10,7 +10,43 @@
       <div class="col-md-4" v-for="user in users">
         <div class="panel panel-info">
           <div class="panel-heading">
-            {{ user.UserName }}
+            <span class="username">{{ user.UserName }}</span>
+            <span><img class="star" :src="getImageUrl('icons/star.png')" alt=""/></span>
+            <span class="label label-primary">{{ user.Stats_TotalScore }}</span>
+          </div>
+          <div class="panel-body">
+            <div class="col-sm-6">
+              <img class="profile-pic" :src="getImageUrl('icons/def-profile.png')" alt=""/>
+            </div>
+            <div class="col-sm-5">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="stats-td">
+                      <img class="stat-icon" :src="getImageUrl('icons/trophy.png')" alt="" />
+                    </td>
+                    <td class="stats-td">
+                      <span>{{ user.Stats_TotalTrophies }}</span>
+                    </td>
+                    <td class="stats-td">
+                      <img class="stat-icon" :src="getImageUrl('icons/medal.png')" alt="" />
+                    </td>
+                    <td class="stats-td">
+                      <span>{{ user.Stats_TotalMedals }}</span>
+                    </td>
+                    <td class="stats-td">
+                      <img class="stat-icon" :src="getImageUrl('icons/kudo.png')" alt="" />
+                    </td>
+                    <td class="stats-td">
+                      <span >{{ user.Stats_TotalKudos }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div>
+                <span style="margin-top:10px">This is my description in case I want to say some words to the world</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -21,6 +57,7 @@
 <script>
   import dashboard from './script/dashboard'
   import baseRequest from '../../lib/baseRequest'
+  import siteConfig from '../../siteconfig'
 
   export default {
     name: 'dashboard',
@@ -28,13 +65,17 @@
       return {
         usersLoaded: false,
         loadingDashboardError: '',
-        users: []
+        users: [],
+        staticFilesUrl: siteConfig.STATIC_FILES_URL
       }
     },
     created () {
       this.loadUsers()
     },
     methods: {
+      getImageUrl (imageName) {
+        return siteConfig.STATIC_FILES_URL + imageName
+      },
       loadUsers () {
         this.$Progress.start()
         dashboard.loadUsers().then(response => {
@@ -52,5 +93,5 @@
 </script>
 
 <style lang="sass">
-  @import '../theme/theme.scss';
+  @import '../theme/theme.scss'
 </style>
