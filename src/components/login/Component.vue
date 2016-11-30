@@ -8,29 +8,33 @@
           </div>
           <div class="panel-body">
             <form v-on:submit.prevent="login">
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  class="form-control"
-                  value=""
-                  placeholder="Username"
-                  maxlength="15"
-                  v-model="username"
-                />
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    class="form-control"
+                    value=""
+                    placeholder="Username"
+                    maxlength="15"
+                    v-model="username"
+                  />
+                </div>
               </div>
-              <div class="form-group">
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  class="form-control"
-                  value=""
-                  placeholder="Password"
-                  maxlength="15"
-                  v-model="password"
-                />
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="form-control"
+                    value=""
+                    placeholder="Password"
+                    maxlength="15"
+                    v-model="password"
+                  />
+                </div>
               </div>
               <hr>
               <input type="submit" class="btn btn-primary" id="loginButton" value="Login" />
