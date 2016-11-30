@@ -15,8 +15,8 @@ function loadTrophies () {
 function validateForm (data) {
   let error = ''
 
-  if (!data.username || data.username.length < 3) {
-    error = 'Username nos specified!'
+  if (!data.userId || data.userId.length < 3) {
+    error = 'UserId nos specified!'
   } else if (!data.trophyId || data.trophyId.length < 3) {
     error = 'Trophy id not specified!'
   }

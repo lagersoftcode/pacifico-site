@@ -103,7 +103,7 @@
 
         this.$Progress.start()
 
-        let data = { username: this.selectedUser.UserName, trophyId: this.selectedTrophy.ID }
+        let data = { userId: this.selectedUser.ID, trophyId: this.selectedTrophy.ID }
         let error = giveTrophy.validateForm(data)
         if (error.length > 0) {
           this.$Progress.fail()
