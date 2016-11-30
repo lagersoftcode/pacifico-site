@@ -53,7 +53,11 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
-  } else if (to.matched.some(record => { return record.name === 'logout' })) {
+  } else if (to.matched.some(record => record.name === 'login') && auth.isLoggedIn()) {
+    next({
+      path: '/'
+    })
+  } else if (to.matched.some(record => record.name === 'logout')) {
     keyStorage.remove('AuthToken')
     next({
       path: '/login'
