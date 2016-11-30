@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <section class="login section">
     <div class="row">
       <div class="col-sm-4 col-sm-offset-4">
         <div class="panel panel-default">
@@ -8,8 +8,30 @@
           </div>
           <div class="panel-body">
             <form v-on:submit.prevent="login">
-              <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" maxlength="15" v-model="username" />
-              <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" maxlength="15" v-model="password" />
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  class="form-control"
+                  value=""
+                  placeholder="Username"
+                  maxlength="15"
+                  v-model="username"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="form-control"
+                  value=""
+                  placeholder="Password"
+                  maxlength="15"
+                  v-model="password"
+                />
+              </div>
               <hr>
               <input type="submit" class="btn btn-primary" id="loginButton" value="Login" />
               <div>
@@ -20,7 +42,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard section">
+  <section class="dashboard section">
     <div class="row">
       <h1>Dashboard</h1>
     </div>
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
