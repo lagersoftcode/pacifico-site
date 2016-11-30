@@ -9,6 +9,7 @@ import TrophyList from './components/catalogs/trophyList/Component'
 import MedalList from './components/catalogs/medalList/Component'
 import GiveTrophy from './components/actions/giveTrophy/Component'
 import NewUser from './components/newUser/Component'
+import NoMatch from './components/noMatch/Component'
 import VueProgressBar from 'vue-progressbar'
 import axios from 'axios'
 import auth from './lib/auth'
@@ -33,7 +34,9 @@ let routes = [
   { name: 'medalList', path: '/medalList', component: MedalList, meta: { requiresAuth: true } },
   { name: 'giveTrophy', path: '/giveTrophy', component: GiveTrophy, meta: { requiresAuth: true } },
   { name: 'newUser', path: '/newUser', component: NewUser, meta: { requiresAuth: true } },
-  { name: 'logout', path: '/logout' }
+  { name: 'logout', path: '/logout' },
+  { path: '*', component: NoMatch }
+
 ]
 
 let router = new VueRouter({routes})
