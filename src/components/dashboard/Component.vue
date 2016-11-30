@@ -3,6 +3,7 @@
     <div class="row">
       <h1>Dashboard</h1>
     </div>
+    <last-actions></last-actions>
     <hr>
     <div class="row">
       <span class="label label-info" v-if="!usersLoaded">Loading users...</span>
