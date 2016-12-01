@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard">
+  <section class="dashboard">
     <div class="row">
       <h1>Add Medal</h1>
     </div>
@@ -36,30 +36,23 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div
-        v-for="message in resultMessages"
-        :class="'alert alert-' + message.type"
-        v-if="message.active"
-        role="alert"
-      >
-        <strong>{{ message.type }}!</strong> {{ message.message }}
-      </div>
-    </div>
-  </div>
+    <alerts :resultMessages="resultMessages" />
+  </section>
 </template>
 <script>
   import addMedal from './script/addMedal'
   import baseRequest from '../../../lib/baseRequest'
-
-  let resultMessages = addMedal.resultMessages
+  import alerts from '../../utils/alerts'
 
   export default {
     name: 'addMedal',
     data () {
       return {
-        resultMessages
+        resultMessages: addMedal.resultMessages()
       }
+    },
+    components: {
+      alerts
     },
     created () {
 
@@ -67,15 +60,13 @@
     methods: {
       save () {
         this.$Progress.start()
-        resultMessages.FORM_ERROR.active = false
-        resultMessages.ERROR.active = false
-        resultMessages.SUCCESS.active = false
+        this.resultMessages = addMedal.resultMessages()
         let data = {name: this.name, image: this.image, description: this.description, material: this.material, scoreAmount: this.scoreAmount}
         let error = addMedal.validateForm(data)
         if (error.length > 0) {
           this.$Progress.fail()
-          resultMessages.FORM_ERROR.message = error
-          resultMessages.FORM_ERROR.active = true
+          this.resultMessages.FORM_ERROR.message = error
+          this.resultMessages.FORM_ERROR.active = true
         } else {
           addMedal.saveMedal(data).then(response => {
             this.$Progress.finish()
@@ -83,9 +74,9 @@
             this.image = ''
             this.description = ''
             this.scoreAmount = 0
-            resultMessages.SUCCESS.active = true
+            this.resultMessages.SUCCESS.active = true
           }).catch(error => {
-            resultMessages.ERROR.active = true
+            this.resultMessages.ERROR.active = true
             baseRequest.errorHandler(error)
           })
         }

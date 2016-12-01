@@ -37,15 +37,13 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <span class="label label-danger">{{ giveTrophyError }}</span>
-      <span class="label label-success">{{ successMessage }}</span>
-    </div>
+    <alerts :resultMessages="resultMessages" />
   </div>
 </template>
 <script>
   import giveTrophy from './script/giveTrophy'
   import baseRequest from '../../../lib/baseRequest'
+  import alerts from '../../utils/alerts'
 
   export default {
     name: 'giveTrophy',
@@ -58,8 +56,12 @@
         trophies: [],
         filteredTrophies: [],
         selectedUser: null,
-        selectedTrophy: null
+        selectedTrophy: null,
+        resultMessages: giveTrophy.resultMessages()
       }
+    },
+    components: {
+      alerts
     },
     created () {
       giveTrophy.loadUsers().then(response => {
@@ -100,8 +102,10 @@
         this.filteredTrophies = []
       },
       saveGivenTrophy: function () {
+        this.resultMessages = giveTrophy.resultMessages()
+
         if (!this.selectedUser || !this.selectedTrophy) {
-          this.giveTrophyError = 'Please select user and trophy'
+          this.resultMessages.IMPUT_ERROR.active = true
           return
         }
 
@@ -111,18 +115,18 @@
         let error = giveTrophy.validateForm(data)
         if (error.length > 0) {
           this.$Progress.fail()
-          this.giveTrophyError = error
+          this.resultMessages.FORM_ERROR.message = error
+          this.resultMessages.FORM_ERROR.active = true
         } else {
-          this.giveTrophyError = ''
           giveTrophy.saveGivenTrophy(data).then(response => {
             this.$Progress.finish()
             this.username = ''
             this.trophy = ''
             this.selectedUser = null
             this.selectedTrophy = null
-            this.successMessage = 'Trophy was given! :)'
+            this.resultMessages.SUCCESS.active = true
           }).catch(error => {
-            this.giveTrophyError = 'Error giving trophy :('
+            this.resultMessages.ERROR.active = true
             baseRequest.errorHandler(error)
           })
         }

@@ -23,9 +23,35 @@ function validateForm (data) {
   return error
 }
 
+function resultMessages () {
+  return {
+    SUCCESS: {
+      message: 'Trophy was given! :)',
+      type: 'success',
+      active: false
+    },
+    ERROR: {
+      message: 'Error giving trophy :(',
+      type: 'danger',
+      active: false
+    },
+    IMPUT_ERROR: {
+      message: 'Please select user and trophy',
+      type: 'danger',
+      active: false
+    },
+    FORM_ERROR: {
+      message: '',
+      type: 'danger',
+      active: false
+    }
+  }
+}
+
 export default {
-  saveGivenTrophy: saveGivenTrophy,
-  validateForm: validateForm,
-  loadUsers: loadUsers,
-  loadTrophies: loadTrophies
+  saveGivenTrophy,
+  validateForm,
+  loadUsers,
+  loadTrophies,
+  resultMessages
 }

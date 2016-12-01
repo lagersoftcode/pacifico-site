@@ -37,15 +37,13 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <span class="label label-danger">{{ giveMedalError }}</span>
-      <span class="label label-success">{{ successMessage }}</span>
-    </div>
+    <alerts :resultMessages="resultMessages" />
   </div>
 </template>
 <script>
   import giveMedal from './script/giveMedal'
   import baseRequest from '../../../lib/baseRequest'
+  import alerts from '../../utils/alerts'
 
   export default {
     name: 'giveMedal',
@@ -58,8 +56,12 @@
         medals: [],
         filteredMedals: [],
         selectedUser: null,
-        selectedMedal: null
+        selectedMedal: null,
+        resultMessages: giveMedal.resultMessages()
       }
+    },
+    components: {
+      alerts
     },
     created () {
       giveMedal.loadUsers().then(response => {
@@ -100,8 +102,10 @@
         this.filteredMedals = []
       },
       saveGivenMedal: function () {
+        this.resultMessages = giveMedal.resultMessages()
+
         if (!this.selectedUser || !this.selectedMedal) {
-          this.giveMedalError = 'Please select user and medal'
+          this.resultMessages.IMPUT_ERROR.active = true
           return
         }
 
@@ -111,7 +115,8 @@
         let error = giveMedal.validateForm(data)
         if (error.length > 0) {
           this.$Progress.fail()
-          this.giveMedalError = error
+          this.resultMessages.FORM_ERROR.message = error
+          this.resultMessages.FORM_ERROR.active = true
         } else {
           this.giveMedalError = ''
           giveMedal.saveGivenMedal(data).then(response => {
@@ -120,9 +125,9 @@
             this.medal = ''
             this.selectedUser = null
             this.selectedMedal = null
-            this.successMessage = 'Medal was given! :)'
+            this.resultMessages.SUCCESS.active = true
           }).catch(error => {
-            this.giveMedalError = 'Error giving medal :('
+            this.resultMessages.ERROR.active = true
             baseRequest.errorHandler(error)
           })
         }

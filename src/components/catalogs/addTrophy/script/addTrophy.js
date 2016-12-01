@@ -20,7 +20,28 @@ function validateForm (data) {
   return error
 }
 
+function resultMessages () {
+  return {
+    SUCCESS: {
+      message: 'trophy created! :)',
+      type: 'success',
+      active: false
+    },
+    ERROR: {
+      message: 'Error creating trophy :(',
+      type: 'danger',
+      active: false
+    },
+    FORM_ERROR: {
+      message: '',
+      type: 'danger',
+      active: false
+    }
+  }
+}
+
 export default {
-  saveTrophy: saveTrophy,
-  validateForm: validateForm
+  saveTrophy,
+  validateForm,
+  resultMessages
 }

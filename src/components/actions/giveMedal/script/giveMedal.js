@@ -23,9 +23,35 @@ function validateForm (data) {
   return error
 }
 
+function resultMessages () {
+  return {
+    SUCCESS: {
+      message: 'Medal was given! :)',
+      type: 'success',
+      active: false
+    },
+    ERROR: {
+      message: 'Error giving Medal :(',
+      type: 'danger',
+      active: false
+    },
+    IMPUT_ERROR: {
+      message: 'Please select user and medal',
+      type: 'danger',
+      active: false
+    },
+    FORM_ERROR: {
+      message: '',
+      type: 'danger',
+      active: false
+    }
+  }
+}
+
 export default {
-  saveGivenMedal: saveGivenMedal,
-  validateForm: validateForm,
-  loadUsers: loadUsers,
-  loadMedals: loadMedals
+  saveGivenMedal,
+  validateForm,
+  loadUsers,
+  loadMedals,
+  resultMessages
 }

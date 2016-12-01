@@ -21,21 +21,23 @@ function validateForm (data) {
   return error
 }
 
-let resultMessages = {
-  SUCCESS: {
-    message: 'Medal created! :)',
-    type: 'success',
-    active: false
-  },
-  ERROR: {
-    message: 'Error creating trophy :(',
-    type: 'danger',
-    active: false
-  },
-  FORM_ERROR: {
-    message: '',
-    type: 'danger',
-    active: false
+function resultMessages () {
+  return {
+    SUCCESS: {
+      message: 'Medal created! :)',
+      type: 'success',
+      active: false
+    },
+    ERROR: {
+      message: 'Error creating Medal :(',
+      type: 'danger',
+      active: false
+    },
+    FORM_ERROR: {
+      message: '',
+      type: 'danger',
+      active: false
+    }
   }
 }
 

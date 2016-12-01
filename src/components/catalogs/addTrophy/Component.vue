@@ -27,38 +27,29 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div v-if="addTrophyError !==''" class="alert alert-danger" role="alert">
-        <strong>Error!</strong> {{ addTrophyError }}
-      </div>
-
-      <div v-if="successMessage !== ''" class="alert alert-success" role="alert">
-        <strong>Success!</strong> {{ successMessage }}
-      </div>
-    </div>
+    <alerts :resultMessages="resultMessages" />
   </section>
 </template>
 
 <script>
   import addTrophy from './script/addTrophy'
   import baseRequest from '../../../lib/baseRequest'
+  import alerts from '../../utils/alerts'
 
   export default {
     name: 'addTrophy',
     data () {
       return {
-        addTrophyError: '',
-        successMessage: ''
+        resultMessages: addTrophy.resultMessages()
       }
     },
-    created () {
-
+    components: {
+      alerts
     },
     methods: {
       save () {
         this.$Progress.start()
-        this.addTrophyError = ''
-        this.successMessage = ''
+        this.resultMessages = addTrophy.resultMessages()
         let data = {
           name: this.name,
           image: this.image,
@@ -68,7 +59,8 @@
         let error = addTrophy.validateForm(data)
         if (error.length > 0) {
           this.$Progress.fail()
-          this.addTrophyError = error
+          this.resultMessages.FORM_ERROR.message = error
+          this.resultMessages.FORM_ERROR.active = true
         } else {
           addTrophy.saveTrophy(data).then(response => {
             this.$Progress.finish()
@@ -76,9 +68,9 @@
             this.image = ''
             this.description = ''
             this.scoreAmount = 0
-            this.successMessage = 'Trophy created! :)'
+            this.resultMessages.SUCCESS.active = true
           }).catch(error => {
-            this.addTrophyError = 'Error creating trophy :('
+            this.resultMessages.ERROR.active = true
             baseRequest.errorHandler(error)
           })
         }

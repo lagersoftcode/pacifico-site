@@ -5,7 +5,7 @@
     </div>
     <hr>
     <div class="row">
-      <div class="panel panel-default">
+      <div class="panel">
         <div class="panel-body">
           <form v-on:submit.prevent="saveUser" class="col-sm-8 col-sm-offset-2">
             <div class="form-group">
@@ -25,39 +25,38 @@
             </div>
             <hr>
             <input type="submit" class="btn btn-primary" id="saveButton" value="Save" />
-            <div>
-                <span class="label label-danger">{{ error }}</span>
-                <span class="label label-success">{{ success }}</span>
-            </div>
           </form>
         </div>
       </div>
     </div>
+    <alerts :resultMessages="resultMessages" />
   </section>
 </template>
 
 <script>
 import newUser from './script/newUser'
+import alerts from '../utils/alerts'
 
 export default {
   name: 'newUser',
   data () {
     return {
-      error: '',
-      success: ''
+      resultMessages: newUser.resultMessages()
     }
+  },
+  components: {
+    alerts
   },
   methods: {
     saveUser () {
       this.$Progress.start()
-      this.error = ''
-      this.success = ''
+      this.resultMessages = newUser.resultMessages()
       newUser.saveUser(this.username, this.password).then(response => {
-        this.success = 'User created'
+        this.resultMessages.SUCCESS.active = true
         this.$Progress.finish()
       }).catch(error => {
         this.$Progress.fail()
-        this.error = 'Error!'
+        this.resultMessages.ERROR.active = true
         console.log(error)
       })
     }

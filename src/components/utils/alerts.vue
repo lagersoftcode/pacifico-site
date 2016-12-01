@@ -1,0 +1,25 @@
+<template>
+  <div class="row">
+    <div
+      v-for="message in resultMessages"
+      :class="'alert alert-' + message.type"
+      v-if="message.active"
+      role="alert"
+    >
+      <strong>{{ message.type }}!</strong> {{ message.message }}
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'alerts',
+    props: {
+      resultMessages: Object
+    }
+  }
+</script>
+
+<style>
+
+</style>
