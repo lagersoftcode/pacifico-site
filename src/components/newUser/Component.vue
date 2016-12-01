@@ -15,7 +15,7 @@
               <input type="text" class="form-control" name="password" id="password" value="" placeholder="Password" maxlength="15" v-model="password" />
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="firstname" id="firstname" value="" placeholder="First Name" maxlength="30" v-model="lastname" />
+              <input type="text" class="form-control" name="firstname" id="firstname" value="" placeholder="First Name" maxlength="30" v-model="firstname" />
             </div>
             <div class="form-group">
               <input type="text" class="form-control" name="lastname" id="lastname" value="" placeholder="Last Name" maxlength="30" v-model="lastname" />
@@ -47,14 +47,28 @@ export default {
     saveUser () {
       this.$Progress.start()
       this.resultMessages = newUser.resultMessages()
-      newUser.saveUser(this.username, this.password).then(response => {
-        this.resultMessages.SUCCESS.active = true
-        this.$Progress.finish()
-      }).catch(error => {
+      let data = {
+        username: this.username,
+        password: this.password,
+        firstname: this.firstname,
+        lastname: this.lastname,
+        email: this.email
+      }
+      let error = newUser.validateForm(data)
+      if (error.length > 0) {
         this.$Progress.fail()
-        this.resultMessages.ERROR.active = true
-        console.log(error)
-      })
+        this.resultMessages.FORM_ERROR.message = error
+        this.resultMessages.FORM_ERROR.active = true
+      } else {
+        newUser.saveUser(data).then(response => {
+          this.resultMessages.SUCCESS.active = true
+          this.$Progress.finish()
+        }).catch(error => {
+          this.$Progress.fail()
+          this.resultMessages.ERROR.active = true
+          console.log(error)
+        })
+      }
     }
   }
 }

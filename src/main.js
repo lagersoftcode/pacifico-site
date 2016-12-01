@@ -24,8 +24,10 @@ Vue.use(VueProgressBar, {
 Vue.component('last-actions', LastActions)
 Vue.component('alerts', Alerts)
 
+// axios defaults
 axios.defaults.headers.post['With-credentials'] = config.WITH_CREDENTIALS_HEADER
 
+// router conditions
 let router = new VueRouter({routes})
 
 router.beforeEach((to, from, next) => {
