@@ -9,6 +9,7 @@ import TrophyList from './components/catalogs/trophyList/Component'
 import MedalList from './components/catalogs/medalList/Component'
 import GiveTrophy from './components/actions/giveTrophy/Component'
 import GiveMedal from './components/actions/giveMedal/Component'
+import LastActions from './components/dashboard/lastActions/Component'
 import NewUser from './components/newUser/Component'
 import NoMatch from './components/noMatch/Component'
 import VueProgressBar from 'vue-progressbar'
@@ -18,11 +19,16 @@ import pollyfills from './lib/pollyfills'
 import config from './siteconfig'
 
 pollyfills()
+
+// Register middlewares
 Vue.use(VueRouter)
 Vue.use(VueProgressBar, {
   failedColor: 'red',
   thickness: '10px'
 })
+
+// Register inner components
+Vue.component('last-actions', LastActions)
 
 axios.defaults.headers.post['With-credentials'] = config.WITH_CREDENTIALS_HEADER
 
