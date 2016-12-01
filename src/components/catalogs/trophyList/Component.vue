@@ -26,9 +26,7 @@
         </table>
       </div>
     </div>
-    <div class="row">
-      <span class="label label-danger">{{ loadTrophiesError }}</span>
-    </div>
+    <alerts :messages="resultMessages" />
   </div>
 </template>
 <script>
@@ -39,7 +37,7 @@
     name: 'trophyList',
     data () {
       return {
-        loadTrophiesError: '',
+        resultMessages: trophyList.resultMessages(),
         trophies: []
       }
     },
@@ -49,11 +47,12 @@
     methods: {
       loadTrophies: function () {
         this.$Progress.start()
+        trophyList.resultMessages()
         trophyList.loadTrophies().then(response => {
           this.trophies = response.data.Trophies
           this.$Progress.finish()
         }).catch(error => {
-          this.loadTrophiesError = 'Error loading trophies'
+          this.resultMessages.ERROR.active = true
           baseRequest.errorHandler(error)
           this.$Progress.fail()
         })

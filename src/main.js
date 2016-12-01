@@ -4,10 +4,12 @@ import keyStorage from 'key-storage'
 import VueProgressBar from 'vue-progressbar'
 import axios from 'axios'
 import routes from './routes'
-import LastActions from './components/dashboard/lastActions/Component'
 import auth from './lib/auth'
 import pollyfills from './lib/pollyfills'
 import config from './siteconfig'
+
+import LastActions from './components/dashboard/lastActions/Component'
+import Alerts from './components/utils/alerts'
 
 pollyfills()
 
@@ -20,6 +22,7 @@ Vue.use(VueProgressBar, {
 
 // Register inner components
 Vue.component('last-actions', LastActions)
+Vue.component('alerts', Alerts)
 
 axios.defaults.headers.post['With-credentials'] = config.WITH_CREDENTIALS_HEADER
 

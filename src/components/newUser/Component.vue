@@ -29,13 +29,12 @@
         </div>
       </div>
     </div>
-    <alerts :resultMessages="resultMessages" />
+    <alerts :messages="resultMessages" />
   </section>
 </template>
 
 <script>
 import newUser from './script/newUser'
-import alerts from '../utils/alerts'
 
 export default {
   name: 'newUser',
@@ -43,9 +42,6 @@ export default {
     return {
       resultMessages: newUser.resultMessages()
     }
-  },
-  components: {
-    alerts
   },
   methods: {
     saveUser () {

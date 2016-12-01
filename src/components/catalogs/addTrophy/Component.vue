@@ -27,14 +27,13 @@
         </div>
       </div>
     </div>
-    <alerts :resultMessages="resultMessages" />
+    <alerts :messages="resultMessages" />
   </section>
 </template>
 
 <script>
   import addTrophy from './script/addTrophy'
   import baseRequest from '../../../lib/baseRequest'
-  import alerts from '../../utils/alerts'
 
   export default {
     name: 'addTrophy',
@@ -42,9 +41,6 @@
       return {
         resultMessages: addTrophy.resultMessages()
       }
-    },
-    components: {
-      alerts
     },
     methods: {
       save () {

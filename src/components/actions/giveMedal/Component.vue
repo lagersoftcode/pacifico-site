@@ -37,13 +37,12 @@
         </div>
       </div>
     </div>
-    <alerts :resultMessages="resultMessages" />
+    <alerts :messages="resultMessages" />
   </div>
 </template>
 <script>
   import giveMedal from './script/giveMedal'
   import baseRequest from '../../../lib/baseRequest'
-  import alerts from '../../utils/alerts'
 
   export default {
     name: 'giveMedal',
@@ -59,9 +58,6 @@
         selectedMedal: null,
         resultMessages: giveMedal.resultMessages()
       }
-    },
-    components: {
-      alerts
     },
     created () {
       giveMedal.loadUsers().then(response => {

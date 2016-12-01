@@ -36,13 +36,12 @@
         </div>
       </div>
     </div>
-    <alerts :resultMessages="resultMessages" />
+    <alerts :messages="resultMessages" />
   </section>
 </template>
 <script>
   import addMedal from './script/addMedal'
   import baseRequest from '../../../lib/baseRequest'
-  import alerts from '../../utils/alerts'
 
   export default {
     name: 'addMedal',
@@ -50,9 +49,6 @@
       return {
         resultMessages: addMedal.resultMessages()
       }
-    },
-    components: {
-      alerts
     },
     created () {
 

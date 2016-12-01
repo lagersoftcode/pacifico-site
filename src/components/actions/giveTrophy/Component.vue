@@ -37,13 +37,12 @@
         </div>
       </div>
     </div>
-    <alerts :resultMessages="resultMessages" />
+    <alerts :messages="resultMessages" />
   </div>
 </template>
 <script>
   import giveTrophy from './script/giveTrophy'
   import baseRequest from '../../../lib/baseRequest'
-  import alerts from '../../utils/alerts'
 
   export default {
     name: 'giveTrophy',
@@ -59,9 +58,6 @@
         selectedTrophy: null,
         resultMessages: giveTrophy.resultMessages()
       }
-    },
-    components: {
-      alerts
     },
     created () {
       giveTrophy.loadUsers().then(response => {

@@ -28,9 +28,7 @@
         </table>
       </div>
     </div>
-    <div class="row">
-      <span class="label label-danger">{{ loadMedalsError }}</span>
-    </div>
+    <alerts :messages="resultMessages" />
   </div>
 </template>
 <script>
@@ -41,7 +39,7 @@
     name: 'medalList',
     data () {
       return {
-        loadMedalsError: '',
+        resultMessages: medalList.resultMessages(),
         medals: []
       }
     },
@@ -50,12 +48,13 @@
     },
     methods: {
       loadMedals: function () {
+        medalList.resultMessages()
         this.$Progress.start()
         medalList.loadMedals().then(response => {
           this.medals = response.data.Medals
           this.$Progress.finish()
         }).catch(error => {
-          this.loadMedalsError = 'Error loading medals'
+          this.resultMessages.ERROR.active = true
           baseRequest.errorHandler(error)
           this.$Progress.fail()
         })

@@ -1,12 +1,12 @@
 <template>
   <div class="row">
     <div
-      v-for="message in resultMessages"
+      v-for="message in messages"
       :class="'alert alert-' + message.type"
       v-if="message.active"
       role="alert"
     >
-      <strong>{{ message.type }}!</strong> {{ message.message }}
+      <strong>{{ message.type.toUpperCase() }}!</strong> {{ message.message }}
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@
   export default {
     name: 'alerts',
     props: {
-      resultMessages: Object
+      messages: Object
     }
   }
 </script>
