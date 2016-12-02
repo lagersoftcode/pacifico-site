@@ -7,8 +7,6 @@ import routes from './routes'
 import auth from './lib/auth'
 import pollyfills from './lib/pollyfills'
 import config from './siteconfig'
-
-import LastActions from './components/dashboard/lastActions/Component'
 import Alerts from './components/utils/alerts'
 
 pollyfills()
@@ -21,7 +19,6 @@ Vue.use(VueProgressBar, {
 })
 
 // Register inner components
-Vue.component('last-actions', LastActions)
 Vue.component('alerts', Alerts)
 
 // axios defaults

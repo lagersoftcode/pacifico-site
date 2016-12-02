@@ -6,7 +6,7 @@
     <div class="row">
       <alerts :messages="resultMessages" />
     </div>
-    <last-actions></last-actions>
+    <last-actions v-bind:eventHandler="eventHandler"></last-actions>
     <hr>
     <div class="row">
       <span class="label label-info" v-if="!usersLoaded">Loading users...</span>
@@ -67,9 +67,15 @@
 </template>
 
 <script>
+  import Vue from 'vue'
   import dashboard from './script/dashboard'
   import baseRequest from '../../lib/baseRequest'
   import siteConfig from '../../siteconfig'
+  import LastActions from './lastActions/Component'
+
+  Vue.component('last-actions', LastActions)
+
+  var eventHandler = new Vue()
 
   export default {
     name: 'dashboard',
@@ -79,7 +85,8 @@
         loadingDashboardError: '',
         users: [],
         staticFilesUrl: siteConfig.STATIC_FILES_URL,
-        resultMessages: dashboard.resultMessages()
+        resultMessages: dashboard.resultMessages(),
+        eventHandler: eventHandler
       }
     },
     created () {
@@ -106,7 +113,8 @@
         dashboard.giveKudo({userId: user.ID}).then(response => {
           this.$Progress.finish()
           this.resultMessages.KudoSuccess.active = true
-          this.loadUsers()
+          user.Stats_TotalKudos += 1
+          this.eventHandler.$emit('action-added')
         }).catch(error => {
           console.log(error)
           this.$Progress.fail()
@@ -115,7 +123,6 @@
           } else {
             this.resultMessages.KudoError.active = true
           }
-
           baseRequest.errorHandler(error)
         })
       }

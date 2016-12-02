@@ -28,7 +28,9 @@
     },
     created () {
       this.loadLastActions()
+      this.eventHandler.$on('action-added', this.loadLastActions)
     },
+    props: ['eventHandler'],
     methods: {
       getIcon (item) {
         switch (item) {
