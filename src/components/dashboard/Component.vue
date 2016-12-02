@@ -3,6 +3,9 @@
     <div class="row">
       <h1>Dashboard</h1>
     </div>
+    <div class="row">
+      <alerts :messages="resultMessages" />
+    </div>
     <last-actions></last-actions>
     <hr>
     <div class="row">
@@ -49,6 +52,14 @@
               </div>
             </div>
           </div>
+          <div class="panel-footer clearfix">
+            <div class="col-sm-4">
+              <input type="button" class="btn btn-warning btn-xs" name="name" value="View profile">
+            </div>
+            <div class="col-sm-4">
+              <input type="button" class="btn btn-primary btn-xs" name="name" value="Give a kudo!" v-on:click="giveKudo(user)">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -67,7 +78,8 @@
         usersLoaded: false,
         loadingDashboardError: '',
         users: [],
-        staticFilesUrl: siteConfig.STATIC_FILES_URL
+        staticFilesUrl: siteConfig.STATIC_FILES_URL,
+        resultMessages: dashboard.resultMessages()
       }
     },
     created () {
@@ -86,6 +98,24 @@
         }).catch(error => {
           this.loadingDashboardError = 'Error loading dashboard data'
           this.$Progress.fail()
+          baseRequest.errorHandler(error)
+        })
+      },
+      giveKudo (user) {
+        this.$Progress.start()
+        dashboard.giveKudo({userId: user.ID}).then(response => {
+          this.$Progress.finish()
+          this.resultMessages.KudoSuccess.active = true
+          this.loadUsers()
+        }).catch(error => {
+          console.log(error)
+          this.$Progress.fail()
+          if (error.response.status === 406) {
+            this.resultMessages.KudoLimit.active = true
+          } else {
+            this.resultMessages.KudoError.active = true
+          }
+
           baseRequest.errorHandler(error)
         })
       }

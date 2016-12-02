@@ -16,7 +16,7 @@
 <script>
   import lastActions from './script/lastActions'
   import siteConfig from '../../../siteconfig'
-  
+
   export default {
     name: 'getLastActions',
     data () {
