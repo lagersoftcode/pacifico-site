@@ -6,7 +6,22 @@
       v-if="message.active"
       role="alert"
     >
-      <strong>{{ message.type.toUpperCase() }}!</strong> {{ message.message }}
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+      >
+        <span
+          aria-hidden="true"
+          v-on:click="close(message)"
+        >
+          &times;
+        </span>
+      </button>
+      <strong>
+        {{ message.type.toUpperCase() }}!
+      </strong>
+      {{ message.message }}
     </div>
   </div>
 </template>
@@ -14,6 +29,11 @@
 <script>
   export default {
     name: 'alerts',
+    methods: {
+      close (message) {
+        message.active = false
+      }
+    },
     props: {
       messages: Object
     }
