@@ -1,7 +1,7 @@
 import baseRequest from '../../../lib/baseRequest'
 
-function loadUsers () {
-  return baseRequest.get('/GetUsers')
+function loadUsers (page, userSearch) {
+  return baseRequest.get('/GetUsers', `?page=${page}&userSearch=${userSearch}`)
 }
 
 function giveKudo (data) {

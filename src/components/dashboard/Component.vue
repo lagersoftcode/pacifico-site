@@ -6,7 +6,12 @@
     <div class="row">
       <alerts :messages="resultMessages" />
     </div>
-    <last-actions v-bind:eventHandler="eventHandler"></last-actions>
+    <hr>
+    <div class="row">
+      <div class="col-sm-2">
+        <input type="text" class="form-control" placeholder="search username" v-model="userSearch" v-on:keyup.enter="loadUsers(1)">
+      </div>
+    </div>
     <hr>
     <div class="row">
       <span class="label label-info" v-if="!usersLoaded">Loading users...</span>
@@ -67,6 +72,25 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li v-if="currentPage > 1">
+            <a href="#" aria-label="Previous" v-on:click="loadUsers(1)">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li><a href="#" v-for="n in totalPages" v-on:click="loadUsers(n)">{{n}}</a></li>
+          <li v-if="currentPage < totalPages">
+            <a href="#" aria-label="Next" v-on:click="loadUsers(totalPages)">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <hr>
+    <last-actions v-bind:eventHandler="eventHandler"></last-actions>
   </section>
 </template>
 
@@ -88,23 +112,28 @@
         usersLoaded: false,
         loadingDashboardError: '',
         users: [],
+        userSearch: '',
         staticFilesUrl: siteConfig.STATIC_FILES_URL,
         resultMessages: dashboard.resultMessages(),
+        totalPages: 2,
+        currentPage: 1,
         eventHandler: eventHandler
       }
     },
     created () {
-      this.loadUsers()
+      this.loadUsers(1)
     },
     methods: {
       getImageUrl (imageName) {
         return siteConfig.STATIC_FILES_URL + imageName
       },
-      loadUsers () {
+      loadUsers (page) {
         this.$Progress.start()
-        dashboard.loadUsers().then(response => {
+        dashboard.loadUsers(page, this.userSearch).then(response => {
           this.usersLoaded = true
           this.users = response.data.Users
+          this.currentPage = response.data.CurrentPage
+          this.totalPages = response.data.TotalPages
           this.$Progress.finish()
         }).catch(error => {
           this.loadingDashboardError = 'Error loading dashboard data'
