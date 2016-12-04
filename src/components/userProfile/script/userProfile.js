@@ -12,8 +12,13 @@ function loadLastKudos (userId) {
   return baseRequest.get('/GetUserLastKudos', `?userId=${userId}`)
 }
 
+function loadUserStats (userId) {
+  return baseRequest.get('/GetUserStats', `?userId=${userId}`)
+}
+
 export default {
   loadTrophies: loadTrophies,
   loadMedals: loadMedals,
-  loadLastKudos: loadLastKudos
+  loadLastKudos: loadLastKudos,
+  loadUserStats: loadUserStats
 }

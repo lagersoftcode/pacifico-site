@@ -2,6 +2,10 @@
   max-width: 256px;
 }
 
+.profile-name {
+  font-size: 35px;
+}
+
 .trophy-list {
   overflow-x: scroll;
   overflow-y: hidden;
@@ -60,4 +64,12 @@
 
 .kudo-given-by {
   font-size: 12px;
+}
+
+.star {
+  max-width: 25px;
+}
+
+.user-stats {
+  margin-top:15px;
 }

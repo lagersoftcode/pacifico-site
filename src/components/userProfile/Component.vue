@@ -1,7 +1,35 @@
 <template>
   <section class="user-profile section">
     <div class="row">
-      <h1>{{ $route.params.userName }} profile</h1>
+      <div class="col-sm-2">
+        <h3><span class="label label-success"> {{ userStats.UserName }} <img class="star" :src="getImageUrl('icons/star.png')" alt=""/> {{ userStats.Stats_TotalScore }} </span></h3>
+      </div>
+      <div class="col-sm-2 user-stats">
+        <table>
+          <tbody>
+            <tr>
+              <td class="stats-td">
+                <img class="stat-icon" :src="getImageUrl('icons/trophy.png')" alt="" />
+              </td>
+              <td class="stats-td">
+                <span>{{ userStats.Stats_TotalTrophies }}</span>
+              </td>
+              <td class="stats-td">
+                <img class="stat-icon" :src="getImageUrl('icons/medal.png')" alt="" />
+              </td>
+              <td class="stats-td">
+                <span>{{ userStats.Stats_TotalMedals }}</span>
+              </td>
+              <td class="stats-td">
+                <img class="stat-icon" :src="getImageUrl('icons/kudo.png')" alt="" />
+              </td>
+              <td class="stats-td">
+                <span >{{ userStats.Stats_TotalKudos }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <hr>
     <div class="row">
@@ -9,7 +37,7 @@
         <img class="profile-pic-big img-responsive center-block" :src="getImageUrl('icons/def-profile.png')" alt=""/>
       </div>
       <div class="col-sm-8">
-        <div class="panel panel-info">
+        <div class="panel panel-primary">
           <div class="panel-heading">
             Trophies
           </div>
@@ -146,10 +174,14 @@
       return {
         trophies: [],
         medals: [],
-        lastKudos: []
+        lastKudos: [],
+        userStats: {
+        }
       }
     },
     created () {
+      this.$Progress.start()
+      this.loadUserStats()
       this.loadTrophies()
       this.loadMedals()
       this.loadLastKudos()
@@ -161,16 +193,25 @@
       loadTrophies () {
         userProfile.loadTrophies(this.$route.params.userId).then(response => {
           this.trophies = response.data.Transactions
+          this.$Progress.increase(25)
         })
       },
       loadMedals () {
         userProfile.loadMedals(this.$route.params.userId).then(response => {
           this.medals = response.data.Transactions
+          this.$Progress.increase(25)
         })
       },
       loadLastKudos () {
         userProfile.loadLastKudos(this.$route.params.userId).then(response => {
           this.lastKudos = response.data.Transactions
+          this.$Progress.increase(25)
+        })
+      },
+      loadUserStats () {
+        userProfile.loadUserStats(this.$route.params.userId).then(response => {
+          this.userStats = response.data
+          this.$Progress.increase(25)
         })
       }
     }
