@@ -19,45 +19,49 @@
             <span class="label label-primary">{{ user.Stats_TotalScore }}</span>
           </div>
           <div class="panel-body">
-            <div class="col-sm-6">
-              <img class="profile-pic" :src="getImageUrl('icons/def-profile.png')" alt=""/>
-            </div>
-            <div class="col-sm-5">
-              <table>
-                <tbody>
-                  <tr>
-                    <td class="stats-td">
-                      <img class="stat-icon" :src="getImageUrl('icons/trophy.png')" alt="" />
-                    </td>
-                    <td class="stats-td">
-                      <span>{{ user.Stats_TotalTrophies }}</span>
-                    </td>
-                    <td class="stats-td">
-                      <img class="stat-icon" :src="getImageUrl('icons/medal.png')" alt="" />
-                    </td>
-                    <td class="stats-td">
-                      <span>{{ user.Stats_TotalMedals }}</span>
-                    </td>
-                    <td class="stats-td">
-                      <img class="stat-icon" :src="getImageUrl('icons/kudo.png')" alt="" />
-                    </td>
-                    <td class="stats-td">
-                      <span >{{ user.Stats_TotalKudos }}</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <span style="margin-top:10px">This is my description in case I want to say some words to the world</span>
+            <div class="row">
+              <div class="col-sm-6">
+                <img class="profile-pic img-responsive center-block" :src="getImageUrl('icons/def-profile.png')" alt=""/>
+              </div>
+              <div class="col-sm-5">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="stats-td">
+                        <img class="stat-icon" :src="getImageUrl('icons/trophy.png')" alt="" />
+                      </td>
+                      <td class="stats-td">
+                        <span>{{ user.Stats_TotalTrophies }}</span>
+                      </td>
+                      <td class="stats-td">
+                        <img class="stat-icon" :src="getImageUrl('icons/medal.png')" alt="" />
+                      </td>
+                      <td class="stats-td">
+                        <span>{{ user.Stats_TotalMedals }}</span>
+                      </td>
+                      <td class="stats-td">
+                        <img class="stat-icon" :src="getImageUrl('icons/kudo.png')" alt="" />
+                      </td>
+                      <td class="stats-td">
+                        <span >{{ user.Stats_TotalKudos }}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <span style="margin-top:10px">This is my description in case I want to say some words to the world</span>
+                </div>
               </div>
             </div>
           </div>
           <div class="panel-footer clearfix">
-            <div class="col-sm-4">
-              <input type="button" class="btn btn-warning btn-xs" name="name" value="View profile">
-            </div>
-            <div class="col-sm-4">
-              <input type="button" class="btn btn-primary btn-xs" name="name" value="Give a kudo!" v-on:click="giveKudo(user)">
+            <div class="row">
+              <div class="col-sm-4 col-xs-6">
+                <input type="button" class="btn btn-warning btn-xs" name="name" value="View profile">
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <input type="button" class="btn btn-primary btn-xs" name="name" value="Give a kudo!" v-on:click="giveKudo(user)">
+              </div>
             </div>
           </div>
         </div>
