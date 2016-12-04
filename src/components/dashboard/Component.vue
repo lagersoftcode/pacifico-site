@@ -62,10 +62,10 @@
           <div class="panel-footer clearfix">
             <div class="row">
               <div class="col-sm-4 col-xs-6">
-                <input type="button" class="btn btn-warning btn-xs" name="name" value="View profile">
+                <input type="button" class="btn btn-warning btn-xs" value="View profile" v-on:click="$router.push({name:'userProfile', params: {userName:user.UserName, userId:user.ID}})">
               </div>
               <div class="col-sm-4 col-xs-6">
-                <input type="button" class="btn btn-primary btn-xs" name="name" value="Give a kudo!" v-on:click="giveKudo(user)">
+                <input type="button" class="btn btn-primary btn-xs" value="Give a kudo!" v-on:click="giveKudo(user)">
               </div>
             </div>
           </div>

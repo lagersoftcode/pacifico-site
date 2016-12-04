@@ -1,0 +1,63 @@
+.profile-pic-big {
+  max-width: 256px;
+}
+
+.trophy-list {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.medal-list {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.kudo-list {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.trophy-image {
+  max-width: 100px;
+  cursor:help;
+}
+
+.medal-image {
+  max-width: 100px;
+  cursor:help;
+}
+
+.kudo-image {
+  max-width: 100px;
+}
+
+.trophy-name {
+  font-size: 9px;
+}
+
+.medal-name {
+  font-size: 9px;
+}
+
+.trophy-td {
+  text-align: center;
+  padding-right: 30px;
+}
+
+.medal-td {
+  text-align: center;
+  padding-right: 30px;
+}
+
+.kudo-td {
+  text-align: center;
+  padding-right: 30px;
+}
+
+.item-text {
+  font-size: 8px;
+}
+
+.kudo-given-by {
+  font-size: 12px;
+}

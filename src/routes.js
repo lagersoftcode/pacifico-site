@@ -8,6 +8,7 @@ import GiveTrophy from './components/actions/giveTrophy/Component'
 import GiveMedal from './components/actions/giveMedal/Component'
 import NewUser from './components/newUser/Component'
 import NoMatch from './components/noMatch/Component'
+import UserProfile from './components/userProfile/Component'
 
 export default [
   { name: 'login', path: '/login', component: Login, meta: { requiresAuth: false } },
@@ -19,6 +20,7 @@ export default [
   { name: 'giveTrophy', path: '/giveTrophy', component: GiveTrophy, meta: { requiresAuth: true } },
   { name: 'giveMedal', path: '/giveMedal', component: GiveMedal, meta: { requiresAuth: true } },
   { name: 'newUser', path: '/newUser', component: NewUser, meta: { requiresAuth: true } },
+  { name: 'userProfile', path: '/userProfile/:userName/:userId', component: UserProfile, meta: { requiresAuth: true } },
   { name: 'logout', path: '/logout' },
   { path: '*', component: NoMatch }
 ]

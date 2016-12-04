@@ -1,5 +1,5 @@
 <template>
-  <section class="dashboard section">
+  <section class="last-actions section">
     <div class="row">
       <h4>Last actions</h4>
       <span class="label label-info" v-if="!lastActionsLoaded">Loading lastActions...</span>
@@ -10,6 +10,7 @@
         <span> from </span><span> {{ action.SourceUser }} </span>
       </div>
     </div>
+    <hr>
   </section>
 </template>
 
@@ -55,4 +56,5 @@
 </script>
 
 <style scoped>
+
 </style>
