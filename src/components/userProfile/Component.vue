@@ -1,34 +1,8 @@
 <template>
   <section class="user-profile section">
     <div class="row">
-      <div class="col-sm-2">
-        <h3><span class="label label-success"> {{ userStats.UserName }} {{ userStats.Category }} <img class="star" :src="getImageUrl('icons/star.png')" alt=""/> {{ userStats.Stats_TotalScore }} </span></h3>
-      </div>
-      <div class="col-sm-2 user-stats">
-        <table>
-          <tbody>
-            <tr>
-              <td class="stats-td">
-                <img class="stat-icon" :src="getImageUrl('icons/trophy.png')" alt="" />
-              </td>
-              <td class="stats-td">
-                <span>{{ userStats.Stats_TotalTrophies }}</span>
-              </td>
-              <td class="stats-td">
-                <img class="stat-icon" :src="getImageUrl('icons/medal.png')" alt="" />
-              </td>
-              <td class="stats-td">
-                <span>{{ userStats.Stats_TotalMedals }}</span>
-              </td>
-              <td class="stats-td">
-                <img class="stat-icon" :src="getImageUrl('icons/kudo.png')" alt="" />
-              </td>
-              <td class="stats-td">
-                <span >{{ userStats.Stats_TotalKudos }}</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-sm-3">
+        <h3><span class="label label-success"> {{ userStats.UserName }} ({{ userStats.Category }}) <img class="star" :src="getImageUrl('icons/star.png')" alt=""/> {{ userStats.Stats_TotalScore }} </span></h3>
       </div>
     </div>
     <hr>
@@ -39,7 +13,9 @@
       <div class="col-sm-8">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            Trophies
+            <span>Trophies</span>
+            <span><img class="stat-icon" :src="getImageUrl('icons/trophy.png')" alt="" />
+            <span class="badge">{{ userStats.Stats_TotalTrophies }}</span></span>
           </div>
           <div class="panel-body">
             <div class="trophy-list">
@@ -82,7 +58,9 @@
       <div class="col-sm-12">
         <div class="panel panel-warning">
           <div class="panel-heading">
-            Medals
+            <span>Medals</span>
+            <span><img class="stat-icon" :src="getImageUrl('icons/medal.png')" alt="" />
+            <span class="badge">{{ userStats.Stats_TotalMedals }}</span></span>
           </div>
           <div class="panel-body">
             <div class="medal-list">
@@ -125,7 +103,9 @@
       <div class="col-sm-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            Last kudos
+            <span>Last Kudos</span>
+            <span><img class="stat-icon" :src="getImageUrl('icons/kudo.png')" alt="" />
+            <span class="badge">{{ userStats.Stats_TotalKudos }}</span></span>
           </div>
           <div class="panel-body">
             <div class="kudo-list">
