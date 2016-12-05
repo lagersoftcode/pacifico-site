@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import jwtDecode from 'jwt-decode'
 import keyStorage from 'key-storage'
 import login from './script/login'
 
@@ -66,6 +67,10 @@ export default {
       login.requestLogin(this.username, this.password).then(response => {
         this.error = ''
         this.$Progress.finish()
+        const tokenInfo = jwtDecode(response.data.AuthToken)
+        // console.log(tokenInfo)
+        // console.log(tokenInfo.UserId)
+        keyStorage.set('UserId', tokenInfo.UserId)
         keyStorage.set('AuthToken', response.data.AuthToken)
 
         let redirect = this.$route.query.redirect || '/'
