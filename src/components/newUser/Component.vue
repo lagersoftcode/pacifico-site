@@ -23,6 +23,24 @@
             <div class="form-group">
               <input type="email" class="form-control" name="email" id="email" value="" placeholder="E-mail" maxlength="255" v-model="email" />
             </div>
+            <div class="form-group">
+              <select class="form-control" v-model="category">
+                <option value="Software Engineer">Software Engineer</option>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value=">Mobile Developer">Mobile Developer</option>
+                <option value="Designer">Designer</option>
+                <option value="Project Manager">Project Manager</option>
+                <option value="Lawyer">Lawyer</option>
+                <option value="Accountant">Accountant</option>
+                <option value="Accountant">Accountant</option>
+                <option value="Seller">Seller</option>
+                <option value="Administrative">Administrative</option>
+                <option value="Executive">Executive</option>
+                <option value="Call Center">Call Center</option>
+                <option value="Support">Support</option>
+                <option value="Quality">Quality</option>
+              </select>
+            </div>
             <hr>
             <input type="submit" class="btn btn-primary" id="saveButton" value="Save" />
           </form>
@@ -52,7 +70,8 @@ export default {
         password: this.password,
         firstname: this.firstname,
         lastname: this.lastname,
-        email: this.email
+        email: this.email,
+        category: this.category
       }
       let error = newUser.validateForm(data)
       if (error.length > 0) {

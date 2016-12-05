@@ -15,6 +15,8 @@ function validateForm (data) {
     error = 'User must have a lastname!'
   } else if (!data.password || data.password.length < 3) {
     error = 'User must have a password!'
+  } else if (!data.category || data.category.length < 3) {
+    error = 'User must have a category!'
   } else if (!data.email || data.email.length < 3) {
     error = 'User must have an email!'
   }

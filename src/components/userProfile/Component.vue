@@ -2,7 +2,7 @@
   <section class="user-profile section">
     <div class="row">
       <div class="col-sm-2">
-        <h3><span class="label label-success"> {{ userStats.UserName }} <img class="star" :src="getImageUrl('icons/star.png')" alt=""/> {{ userStats.Stats_TotalScore }} </span></h3>
+        <h3><span class="label label-success"> {{ userStats.UserName }} {{ userStats.Category }} <img class="star" :src="getImageUrl('icons/star.png')" alt=""/> {{ userStats.Stats_TotalScore }} </span></h3>
       </div>
       <div class="col-sm-2 user-stats">
         <table>

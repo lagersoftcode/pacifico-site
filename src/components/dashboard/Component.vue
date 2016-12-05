@@ -19,7 +19,7 @@
       <div class="col-md-4" v-for="user in users">
         <div class="panel panel-info">
           <div class="panel-heading">
-            <span class="username">{{ user.UserName }}</span>
+            <span class="username">{{ user.UserName }} ({{ user.Category }})</span>
             <span><img class="star" :src="getImageUrl('icons/star.png')" alt=""/></span>
             <span class="label label-primary">{{ user.Stats_TotalScore }}</span>
           </div>
