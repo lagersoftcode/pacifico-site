@@ -1,3 +1,9 @@
 import baseRequest from '../../../../lib/baseRequest'
 
-export default {}
+function loadAvatarItems () {
+  return baseRequest.get('/GetUserAvatarItems')
+}
+
+export default {
+  loadAvatarItems: loadAvatarItems
+}

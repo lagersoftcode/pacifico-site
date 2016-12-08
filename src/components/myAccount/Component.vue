@@ -2,7 +2,7 @@
   <section class="user-profile section">
     <div class="row">
       <div class="col-sm-3">
-        <h3><span class="label label-success"> {{ userStats.UserName }} ({{ userStats.Category }}) <img class="star" :src="getImageUrl('icons/star.png')" alt=""/> {{ userStats.Stats_TotalScore }} </span></h3>
+        <h3><span class="label label-success"> {{ userStats.UserName }} ({{ userStats.Category }}) <img class="star" :src="getImageUrl('/icons/star.png')" alt=""/> {{ userStats.Stats_TotalScore }} </span></h3>
       </div>
     </div>
     <hr>
@@ -10,7 +10,7 @@
 
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li role="presentation"><a href="#avatar" aria-controls="avatar" role="tab" data-toggle="tab">Avatar</a></li>
+        <li role="presentation"><a href="#avatar" aria-controls="avatar" role="tab" data-toggle="tab" v-on:click="loadAvatarData">Avatar</a></li>
         <li role="presentation"><a href="#password" aria-controls="password" role="tab" data-toggle="tab">Password</a></li>
       </ul>
 
@@ -19,7 +19,7 @@
           <profile />
         </div>
         <div role="tabpanel" class="tab-pane" id="avatar">
-          <avatar />
+          <avatar ref="avatar" />
         </div>
         <div role="tabpanel" class="tab-pane" id="password">
           <password />
@@ -65,6 +65,9 @@
           this.userStats = response.data
           this.$Progress.increase(25)
         })
+      },
+      loadAvatarData () {
+        this.$refs.avatar.loadAvatarItems()
       }
     }
   }

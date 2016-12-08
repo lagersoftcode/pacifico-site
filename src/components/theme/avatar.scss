@@ -1,0 +1,19 @@
+.panel-heading-sm{
+    height: 28px;
+    padding: 4px 10px;
+}
+
+.horizontal-scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.avatar-item {
+  cursor:pointer;
+  max-width: 50px;
+  margin-left: 20px;
+}
+
+.avatar-item:hover {
+  border: 1px solid blue;
+}

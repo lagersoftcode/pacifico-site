@@ -20,32 +20,32 @@
         <div class="panel panel-info">
           <div class="panel-heading">
             <span class="username">{{ user.UserName }} ({{ user.Category }})</span>
-            <span><img class="star" :src="getImageUrl('icons/star.png')" alt=""/></span>
+            <span><img class="star" :src="getImageUrl('/icons/star.png')" alt=""/></span>
             <span class="label label-primary">{{ user.Stats_TotalScore }}</span>
           </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-6">
-                <img class="profile-pic img-responsive center-block" :src="getImageUrl('icons/def-profile.png')" alt=""/>
+                <img class="profile-pic img-responsive center-block" :src="getImageUrl('/icons/def-profile.png')" alt=""/>
               </div>
               <div class="col-sm-5">
                 <table>
                   <tbody>
                     <tr>
                       <td class="stats-td">
-                        <img class="stat-icon" :src="getImageUrl('icons/trophy.png')" alt="" />
+                        <img class="stat-icon" :src="getImageUrl('/icons/trophy.png')" alt="" />
                       </td>
                       <td class="stats-td">
                         <span>{{ user.Stats_TotalTrophies }}</span>
                       </td>
                       <td class="stats-td">
-                        <img class="stat-icon" :src="getImageUrl('icons/medal.png')" alt="" />
+                        <img class="stat-icon" :src="getImageUrl('/icons/medal.png')" alt="" />
                       </td>
                       <td class="stats-td">
                         <span>{{ user.Stats_TotalMedals }}</span>
                       </td>
                       <td class="stats-td">
-                        <img class="stat-icon" :src="getImageUrl('icons/kudo.png')" alt="" />
+                        <img class="stat-icon" :src="getImageUrl('/icons/kudo.png')" alt="" />
                       </td>
                       <td class="stats-td">
                         <span >{{ user.Stats_TotalKudos }}</span>
@@ -154,7 +154,7 @@
           if (error.response.status === 406) {
             this.resultMessages.KudoLimit.active = true
           } else {
-            this.resultMessages.KudoError.active = true
+            this.resultMessages.KudoError.active = false
           }
           baseRequest.errorHandler(error)
         })

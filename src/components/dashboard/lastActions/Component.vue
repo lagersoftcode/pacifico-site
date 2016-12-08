@@ -36,11 +36,11 @@
       getIcon (item) {
         switch (item) {
           case 'Medal':
-            return siteConfig.STATIC_FILES_URL + 'icons/medal.png'
+            return siteConfig.STATIC_FILES_URL + '/icons/medal.png'
           case 'Trophy':
-            return siteConfig.STATIC_FILES_URL + 'icons/trophy.png'
+            return siteConfig.STATIC_FILES_URL + '/icons/trophy.png'
           case 'Kudo':
-            return siteConfig.STATIC_FILES_URL + 'icons/kudo.png'
+            return siteConfig.STATIC_FILES_URL + '/icons/kudo.png'
         }
       },
       loadLastActions () {
